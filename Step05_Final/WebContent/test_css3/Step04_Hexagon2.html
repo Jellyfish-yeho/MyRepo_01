@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Step04_Hexagon2.html</title>
+   <style>
+   .wrapper{
+      perspective: 500px;
+      perspective-origin: 50% 50%;
+      margin-top: 200px;
+      border: 1px solid red;
+   }
+   .cube{
+      transform-style: preserve-3d;
+      transform-origin: 50% 50%;
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 0 auto; /* 가운데 정렬 */
+   }
+   .cube > div{
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      opacity: 0.6; /* 투명도 */
+      background-color: #2e272f;
+   }
+   .cube img{
+      width: 400px;
+      height: 400px;
+   }
+   
+   .control{
+      /* 인라인 요소의 가운데 정렬 */
+      text-align: center;
+   }   
+   
+   
+   </style>
+</head>
+<body>
+<div class="wrapper">
+   <div class="cube">
+      <div><img src="../images/image1.png"></div>
+      <div><img src="../images/image2.png"></div>
+      <div><img src="../images/image3.png"></div>
+      <div><img src="../images/image4.png"></div>
+      <div><img src="../images/image5.png"></div>
+      <div><img src="../images/image6.png"></div>
+      <div><img src="../images/image1.png"></div>
+      <div><img src="../images/image2.png"></div>
+      <div><img src="../images/image3.png"></div>
+      <div><img src="../images/image4.png"></div>
+   </div>
+</div>
+<div class="control">
+   <button id="prevBtn">&larr;</button>
+   <button id="nextBtn">&rarr;</button>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, earum, debitis. Consectetur inventore quaerat aperiam nihil minima, vitae laudantium, ut animi illum blanditiis cum earum, fugiat nisi ipsam dolore possimus.</p>         
+<script>
+   //배치할 모든 div 의 참조값을 배열에 담아오기  
+   const divs = document.querySelectorAll(".cube > div"); 
+   //div 가 몇개인지 배열의 방의 갯수 얻어오기
+   const n=divs.length;
+   
+   const obj=getAngleNtz(n, 400);
+   //tz 값과 angle 값 얻어오기 
+   const tz=obj.tz;
+   const angle=obj.angle;
+   // 반복문 돌면서 n 개의 div 모두 배치하기
+   for(let i=0; i<divs.length; i++){
+      divs[i].style.transform=
+         `rotateY(${i*angle}deg) translateZ(-${tz}px)`;
+   }
+   // .cube div 도 뒤로 밀어 놓기
+   document.querySelector(".cube").style.transform=`translateZ(-${tz}px)`;
+   
+   setTimeout(function(){
+      // transition 적용
+      document.querySelector(".cube").style.transition=
+         "transform 0.5s ease-out";
+   }, 500);
+   
+   
+   let rY=0;
+   
+   document.querySelector("#prevBtn")
+      .addEventListener("click", function(){
+         rY += angle;
+         document.querySelector(".cube").style.transform=
+            `translateZ(-${tz}px) rotateY(${rY}deg)`;
+      });
+   document.querySelector("#nextBtn")
+      .addEventListener("click", function(){
+         rY -= angle;
+         document.querySelector(".cube").style.transform=
+            `translateZ(-${tz}px) rotateY(${rY}deg)`;
+      });
+   
+
+   // n 각형과 한변의 길이가 width 일때 몇도씩 돌면서 z 축방향으로 얼마만큼 평행이동하면 되는지 
+   // 에 대한 정보를 담고있는 object 를 리턴하는 함수 
+   function getAngleNtz(n, width) {
+       var angle = Math.round(360 / n);
+       var tz = Math.round((width / 2) / Math.tan((angle * Math.PI) / (2 * 180)));
+       var obj = {
+         angle: angle,
+         tz: tz
+       };
+       return obj;
+    }
+   
+   
+   /*
+      [hint]
+      
+      //배치할 모든 div 의 참조값을 배열에 담아오기  
+      const divs = document.querySelector(".cube > div"); 
+      //div 의 갯수 ( n 각형)
+      const n = divs.length;
+      
+      const obj = getAngleNtz(n, 400);
+      
+      const tz = obj.tz;
+      
+      for(let i=0; i<divs.length; i++){
+         
+      }
+   
+   */
+   
+   
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Step02_Example.html</title>
+<style>
+	.box{
+		width:100px;
+		height: 100px;
+		border: 1px solid red;
+		background-color: yellow;
+	}
+	.transition-effect{
+		transition: margin-left 1s linear;
+	}
+</style>
+</head>
+<body>
+<button id="moveBtn">click!</button>
+<div class="box transition-effect"></div>
+<script>
+	/*버튼을 눌렀을 때, .box div를 우측으로 500px 움직이기*/
+	document.querySelector("#moveBtn").addEventListener("click",function(){
+		document.querySelector(".box").style.marginLeft="500px";
+	});
+	document.querySelector(".box").addEventListener("transitionend",function(){
+		this.innerText="yeah~";	
+	});
+</script>
+</body>
+</html>
+
+

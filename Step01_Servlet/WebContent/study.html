@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/study.html</title>
+</head>
+<body>
+	<h1>공부하세요</h1>
+	<a href="index.html">back to index1</a>
+	<a href="/Step01_Servlet/index.html">back to index2</a>
+	
+	<form action="/Step01_Servlet/study/you" method="get">
+		<label for="msg">message1</label>
+		<input type="text" id="msg" name="msg" />
+		<button type="submit">send1</button>
+	</form>
+	
+	<form action="/Step01_Servlet/study/you.jsp" method="get">
+		<label for="msg">message2</label>
+		<input type="text" id="msg" name="msg" />
+		<button type="submit">send2</button>
+	</form>
+	
+	<form action="/Step01_Servlet/study/you" method="post">
+		<label for="msg">message3</label>
+		<input type="text" id="msg" name="msg" />
+		<button type="submit">send3</button>
+	</form>
+	
+	<form action="/Step01_Servlet/study/you.jsp" method="post">
+		<label for="msg">message4</label>
+		<input type="text" id="msg" name="msg" />
+		<button type="submit">send4</button>
+	</form>
+	
+</body>
+</html>
