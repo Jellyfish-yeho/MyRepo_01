@@ -38,6 +38,9 @@
 				<li class="nav-item">
 					<a class="nav-link <%=thisPage.equals("file") ? "active" : "" %>" href="<%=request.getContextPath() %>/file/list.jsp">Library</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link <%=thisPage.equals("gallery") ? "active" : "" %>" href="<%=request.getContextPath() %>/gallery/list.jsp">Gallery</a>
+				</li>
 			</ul>
 			<%if(id==null){ %>
 				<a class="btn btn-info btn-sm me-2" href="<%=request.getContextPath()%>/users/signup_form.jsp">sign-up</a>
