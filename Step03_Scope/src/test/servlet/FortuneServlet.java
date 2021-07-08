@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 //웹브라우저가 요청하는 경로를 context 경로를 빼고 적는다.
-@WebServlet("/fortune")
+@WebServlet("/*")
 public class FortuneServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
