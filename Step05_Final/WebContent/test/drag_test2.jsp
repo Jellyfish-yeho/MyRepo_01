@@ -32,6 +32,7 @@
    .addEventListener("dragover", function(e){
       // drop 이벤트까지 진행될수 있도록 기본 동작을 막는다.
       e.preventDefault();
+      e.stopPropagation();
    });
    
    document.querySelector(".drag-area")
